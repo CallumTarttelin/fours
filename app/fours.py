@@ -12,6 +12,7 @@ class Fours(object):
         biggest = max([len(thing) for thing in self.board])
         out = ""
         for x in range(biggest):
+            out += "| "
             for y in self.board:
                 try:
                     out += "%s | " % str(y[x])
@@ -82,10 +83,26 @@ class Card(object):
 
     def __repr__(self):
         values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
-        if self.value == 8:
-            return "%s %s" % (values[self.value], self.suit[:1])
+        if self.suit == "Spades":
+            pic = u"♠"
+        elif self.suit == "Hearts":
+            pic = u"♥"
+        elif self.suit == "Diamonds":
+            pic = u"♦"
+        elif self.suit == "Clubs":
+            pic = u"♣"
         else:
-            return "%s  %s" % (values[self.value], self.suit[:1])
+            raise ValueError  # Invalid suit
+
+        if self.value == 8:
+            return "%s %s" % (values[self.value], pic)
+        else:
+            return "%s  %s" % (values[self.value], pic)
+
+        # if self.value == 8:
+        #     return "%s %s" % (values[self.value], self.suit[:1])
+        # else:
+        #     return "%s  %s" % (values[self.value], self.suit[:1])
 
     def __hash__(self):
         return ("%s:%s" % (self.suit, self.value)).__hash__()

@@ -76,7 +76,7 @@ class TestCard(unittest.TestCase):
 
     def test_equals(self):
         self.assertEqual(fours.Card("Diamond", 6), fours.Card("Diamond", 6))
-        #assert_that(fours.Card("Diamond", 6)).is_same_as(fours.Card("Diamond", 6))
+        # assert_that(fours.Card("Diamond", 6)).is_same_as(fours.Card("Diamond", 6))
 
 
 class TestDeck(unittest.TestCase):
@@ -101,6 +101,7 @@ class TestDeck(unittest.TestCase):
     def test_duplicates(self):
         deck = fours.Deck()
         assert_that(len(set(deck.cards))).is_equal_to(len(deck.cards))
+        assert_that(len(set([x.__repr__() for x in deck.cards]))).is_equal_to(len([x.__repr__() for x in deck.cards]))
 
     def test_out(self):
         deck = fours.Deck()
