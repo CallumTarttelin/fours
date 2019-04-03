@@ -65,6 +65,7 @@ class Handlers(object):
                 self.helpText.set("Invalid clear, needs card of greater value and same suit on board")
             self.update()
         elif self.next == 2:
+            # Doesn't seem to work without == []
             if self.fours.board[position] == []:
                 self.helpText.set("Invalid movement, no card on pile")
                 self.next = 0
@@ -97,6 +98,7 @@ class Handlers(object):
         self.helpText.set("Drawn 4 more cards!")
 
     def handle_new(self):
+        # Doesn't seem to work without != []
         if self.fours.deck.cards != []:
             self.popup()
         else:
